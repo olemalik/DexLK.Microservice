@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DexLK.API.Gateway/obj
+/.vs/DexLK.Microservice/v17/TestStore/0
+/.vs/DexLK.Microservice/xs
+/DexLK.Authentication/.vs/DexLK.Authentication/xs
+/DexLK.Authentication/bin
+/DexLK.Authentication/obj
