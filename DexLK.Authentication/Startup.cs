@@ -24,7 +24,13 @@ namespace DexLK.Authentication
         public void ConfigureServices(IServiceCollection services)
         {
             //enable Cross-Origin Requests
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
             services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true); ;
             //Enable later to allow AllowAnonymousAttribute,if you enable this then enable the  endpoints.MapHealthChecks in the Configuration
             //services.AddHealthChecks();

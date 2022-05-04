@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Text;
+using DexLK.Product.Helpers;
 using DexLK.Product.Model.DBContexts;
 using DexLK.Product.Repository;
+using DexLK.Product.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -50,11 +52,29 @@ namespace DexLK.Product
                 x.RequireHttpsMetadata = false;
                 x.TokenValidationParameters = tokenValidationParameters;
             });
+
             //enable Cross-Origin Requests
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
             services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true); ;
             //Enable later to allow AllowAnonymousAttribute,if you enable this then enable the  endpoints.MapHealthChecks in the Configuration
             //services.AddHealthChecks();
+
+            // configure strongly typed settings objects
+            var appSettingsAudienceSection = Configuration.GetSection("Audience");
+            services.Configure<Audience>(appSettingsAudienceSection);
+
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
 
             services.AddHttpClient();
             services.AddDbContextPool<DBContext>(options => options.UseMySQL(Configuration.GetConnectionString("Default")));
@@ -113,6 +133,9 @@ namespace DexLK.Product
 
             app.UseAuthorization();
             app.UseAuthentication();
+
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

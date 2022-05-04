@@ -9,7 +9,7 @@
           "Port": 44337
         }
       ],
-      "UpstreamPathTemplate": "/gateway/product",
+      "UpstreamPathTemplate": "/productservice/product",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
     },
     {
@@ -21,7 +21,7 @@
           "Port": 44337
         }
       ],
-      "UpstreamPathTemplate": "/gateway/product/{id}",
+      "UpstreamPathTemplate": "/productservice/product/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
@@ -30,10 +30,10 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44373
+          "Port": 44319
         }
       ],
-      "UpstreamPathTemplate": "/gateway/users",
+      "UpstreamPathTemplate": "/userservice/users",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
     },
     {
@@ -42,10 +42,10 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44373
+          "Port": 44319
         }
       ],
-      "UpstreamPathTemplate": "/gateway/users/{id}",
+      "UpstreamPathTemplate": "/userservice/users/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     }
   ],

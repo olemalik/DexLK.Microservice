@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DexLK.Authentication.Helpers
+namespace DexLK.Product.Helpers
 {
-    public class AppSettings
+    public class Audience
     {
         public string Secret { get; set; }
-        public int ExpireMinutes { get; set; }
     }
 }
