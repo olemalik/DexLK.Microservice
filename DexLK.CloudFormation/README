@@ -1,0 +1,5 @@
+#Create CloudFormation
+
+1. Go to cloud formation menu and  click on the createstack to create formation
+2. Create one global file for all the services (template_cluster.yaml,template_network.yml)
+3. Create 3 services for each microservice (Authentication, Address and Exchange)
