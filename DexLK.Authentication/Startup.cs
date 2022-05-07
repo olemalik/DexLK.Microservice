@@ -33,7 +33,7 @@ namespace DexLK.Authentication
             });
             services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true); ;
             //Enable later to allow AllowAnonymousAttribute,if you enable this then enable the  endpoints.MapHealthChecks in the Configuration
-            //services.AddHealthChecks();
+            services.AddHealthChecks();
 
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -109,6 +109,7 @@ namespace DexLK.Authentication
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
 
             app.UseSwagger();

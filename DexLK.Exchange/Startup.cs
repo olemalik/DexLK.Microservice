@@ -64,7 +64,7 @@ namespace DexLK.Exchange
 
             services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true); ;
             //Enable later to allow AllowAnonymousAttribute,if you enable this then enable the  endpoints.MapHealthChecks in the Configuration
-            //services.AddHealthChecks();
+            services.AddHealthChecks();
 
             // configure strongly typed settings objects
             var appSettingsAudienceSection = Configuration.GetSection("Audience");
@@ -140,6 +140,7 @@ namespace DexLK.Exchange
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
 
             app.UseSwagger();
