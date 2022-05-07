@@ -10,3 +10,7 @@
 /DexLK.Authentication/obj
 *.suo
 /DexLK.API.Gateway/bin/Debug/netcoreapp3.1
+/DexLK.Address/obj
+/DexLK.Address/bin/Debug/netcoreapp3.1
+/DexLK.API.Gateway/bin/Debug/netcoreapp3.1
+

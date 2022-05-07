@@ -1,7 +1,7 @@
 ﻿{
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/product",
+      "DownstreamPathTemplate": "/api/exchange",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -9,11 +9,11 @@
           "Port": 44337
         }
       ],
-      "UpstreamPathTemplate": "/productservice/product",
+      "UpstreamPathTemplate": "/exchangeservice/product",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/api/product/{id}",
+      "DownstreamPathTemplate": "/api/exchange/{id}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -21,7 +21,31 @@
           "Port": 44337
         }
       ],
-      "UpstreamPathTemplate": "/productservice/product/{id}",
+      "UpstreamPathTemplate": "/exchangeservice/exchange/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/wallet",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49167
+        }
+      ],
+      "UpstreamPathTemplate": "/addressservice/wallet",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/wallet/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 49167
+        }
+      ],
+      "UpstreamPathTemplate": "/addressservice/wallet/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {

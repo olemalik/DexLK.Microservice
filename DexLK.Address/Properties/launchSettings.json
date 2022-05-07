@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:37399",
-      "sslPort": 44319
+      "applicationUrl": "http://localhost:7020",
+      "sslPort": 44309
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DexLK.Authentication": {
+    "DEXLK.Address": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
