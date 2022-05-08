@@ -56,7 +56,7 @@ Resources:
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
-      Name: service-tg
+      Name: service-tg-authentication
       VpcId: !ImportValue VPC
       Port: 80
       Protocol: HTTP

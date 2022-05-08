@@ -8,7 +8,7 @@ namespace DexLK.Address.Model.DBContexts
         public DBContext(DbContextOptions<DBContext> options) : base(options)
         {
         }
-        public DbSet<Wallet> Wallet { get; set; }
+        public DbSet<Address.Models.Wallet> Wallet { get; set; }
         public DbSet<Models.Exchange> Exchange { get; set; }       
 
     }

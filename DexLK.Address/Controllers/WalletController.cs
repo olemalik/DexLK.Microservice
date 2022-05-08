@@ -3,7 +3,7 @@ using DexLK.Address.Models;
 using DexLK.Address.Repository;
 using System.Transactions;
 
-namespace DexLK.Exchange.Controllers
+namespace DexLK.Wallet.Controllers
 {
     [Authorize]
     [ApiController]
@@ -17,7 +17,7 @@ namespace DexLK.Exchange.Controllers
     {
       _walletRepository = walletRepository;
     }
-    // GET: api/Exchange
+    // GET: api/Wallet
     [HttpGet]
     public IActionResult Get()
     {
@@ -25,7 +25,7 @@ namespace DexLK.Exchange.Controllers
       return new OkObjectResult(wallets);
     }
 
-    // GET: api/Exchange/5
+    // GET: api/Wallet/5
     [HttpGet("{id}", Name = "Get")]
     public IActionResult Get(int id)
     {
@@ -33,9 +33,9 @@ namespace DexLK.Exchange.Controllers
       return new OkObjectResult(wallet);
     }
 
-    // POST: api/Exchange
+    // POST: api/Wallet
     [HttpPost]
-    public IActionResult Post([FromBody] Wallet wallet)
+    public IActionResult Post([FromBody] Address.Models.Wallet wallet)
     {
       var sasa = Request;
       using (var scope = new TransactionScope())
@@ -46,9 +46,9 @@ namespace DexLK.Exchange.Controllers
       }
     }
 
-    // PUT: api/Exchange/5
+    // PUT: api/Wallet/5
     [HttpPut]
-    public IActionResult Put([FromBody] Wallet wallet)
+    public IActionResult Put([FromBody] Address.Models.Wallet wallet)
     {
       if (wallet != null)
       {

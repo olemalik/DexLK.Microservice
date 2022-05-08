@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: CloudFormation template for creating a task definition
+Description: CloudFormation template for creating a task definition - dexlk-exchange-docker
 
 Resources:
 
@@ -14,12 +14,12 @@ Resources:
         - FARGATE
       ExecutionRoleArn: !ImportValue ECSTaskExecutionRole
       ContainerDefinitions:
-        - Name: dexlk-authenticate
-          Image: public.ecr.aws/x5n8i3z0/dexlk-authenticate:latest
+        - Name: dexlk-exchange-docker
+          Image: public.ecr.aws/x5n8i3z0/dexlk-exchange-docker:latest
           Cpu: 256
           Memory: 512
           PortMappings:
-            - ContainerPort: 8080
+            - ContainerPort: 8081
               Protocol: tcp
           LogConfiguration:
             LogDriver: awslogs
@@ -32,7 +32,7 @@ Resources:
     Type: AWS::ECS::Service
     DependsOn: ListenerRule
     Properties:
-      ServiceName: dexlk-authenticate-service
+      ServiceName: dexlk-exchange-docker-service
       TaskDefinition: !Ref Task
       Cluster: !ImportValue 'ECSCluster'
       LaunchType: FARGATE
@@ -49,14 +49,14 @@ Resources:
           SecurityGroups:
             - !ImportValue ContainerSecurityGroup
       LoadBalancers:
-        - ContainerName: dexlk-authenticate
-          ContainerPort: 8080
+        - ContainerName: dexlk-exchange-docker
+          ContainerPort: 8081
           TargetGroupArn: !Ref TargetGroup
 
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
-      Name: service-tg
+      Name: service-tg-dexlk-exchange-docker
       VpcId: !ImportValue VPC
       Port: 80
       Protocol: HTTP
@@ -77,7 +77,7 @@ Resources:
       Conditions:
         - Field: path-pattern
           Values:
-            - /api/users
+            - /api/exchange
       Actions:
         - TargetGroupArn: !Ref TargetGroup
           Type: forward
@@ -86,7 +86,7 @@ Resources:
 Outputs:
 
   ApiEndpoint:
-    Description: Clould Formation Service - Authentication
-    Value: !Join ['', ['http://', !ImportValue DomainName, '/api/users']]
+    Description: Clould Formation Service - Exchange
+    Value: !Join ['', ['http://', !ImportValue DomainName, '/api/exchange']]
     Export:
-      Name: 'API-Authentication'
+      Name: 'API-Exchange'
