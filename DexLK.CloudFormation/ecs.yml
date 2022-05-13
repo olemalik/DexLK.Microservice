@@ -16,12 +16,12 @@ Resources:
     Properties:
       TemplateURL: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
 
-ServiceAddress:
+  ServiceAddress:
     Type: "AWS::CloudFormation::Stack"
     Properties:
       TemplateURL: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
 
-ServiceExchange:
+  ServiceExchange:
     Type: "AWS::CloudFormation::Stack"
     Properties:
       TemplateURL: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
