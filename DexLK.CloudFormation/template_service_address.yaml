@@ -24,7 +24,7 @@ Resources:
           LogConfiguration:
             LogDriver: awslogs
             Options:
-              awslogs-group: 'apisx'
+              awslogs-group: 'add'
               awslogs-region: !Ref AWS::Region
               awslogs-stream-prefix: 'api'
 
