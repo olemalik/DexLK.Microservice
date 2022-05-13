@@ -1,0 +1,88 @@
+Description: Master stack which creates all required nested stacks
+
+Resources:
+  NetworkStack:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL:
+        Fn::Sub: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
+      Parameters:
+        S3BucketName:
+          Ref: S3BucketName
+        VPCID:
+          Ref: VPCID
+        Environment:
+          Ref: Environment
+      Tags:
+        - Key: Name
+          Value: NetworkStack
+
+  ClusterStack:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL:
+        Fn::Sub: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
+      Parameters:
+        S3BucketName:
+          Ref: S3BucketName
+        VPCID:
+          Ref: VPCID
+        Environment:
+          Ref: Environment
+      Tags:
+        - Key: Name
+          Value: ClusterStack
+
+  ServiceAuthentication:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL:
+        Fn::Sub: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
+      Parameters:
+        S3BucketName:
+          Ref: S3BucketName
+        VPCID:
+          Ref: VPCID
+        Environment:
+          Ref: Environment
+      Tags:
+        - Key: Name
+          Value: ServiceAuthentication
+
+ServiceAddress:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL:
+        Fn::Sub: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
+      Parameters:
+        S3BucketName:
+          Ref: S3BucketName
+        VPCID:
+          Ref: VPCID
+        Environment:
+          Ref: Environment
+      Tags:
+        - Key: Name
+          Value: ServiceAddress
+
+ServiceExchange:
+    Type: "AWS::CloudFormation::Stack"
+    Properties:
+      TemplateURL:
+        Fn::Sub: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
+      Parameters:
+        S3BucketName:
+          Ref: S3BucketName
+        VPCID:
+          Ref: VPCID
+        Environment:
+          Ref: Environment
+      Tags:
+        - Key: Name
+          Value: ServiceExchange
+
+Outputs:
+  WebELBURL:
+    Description: "URL endpoint of web ELB"
+    Value:
+      Fn::GetAtt: ServerStack.Outputs.WebELBURL
