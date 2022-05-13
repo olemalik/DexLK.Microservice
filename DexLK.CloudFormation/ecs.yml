@@ -14,14 +14,14 @@ Resources:
   ServiceAuthentication:
     Type: "AWS::CloudFormation::Stack"
     Properties:
-      TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_service._authentication.yaml"
+      TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_service_authentication.yaml"
 
   ServiceAddress:
     Type: "AWS::CloudFormation::Stack"
     Properties:
-      TemplateURL: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
+      TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_service_address.yaml"
 
   ServiceExchange:
     Type: "AWS::CloudFormation::Stack"
     Properties:
-      TemplateURL: "https://s3.amazonaws.com/${TemplatePath}/security-stack.yml"
+      TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_service_exchange.yaml"
