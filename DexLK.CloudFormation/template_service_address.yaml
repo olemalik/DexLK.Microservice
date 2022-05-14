@@ -24,7 +24,7 @@ Resources:
           LogConfiguration:
             LogDriver: awslogs
             Options:
-              awslogs-group: 'add'
+              awslogs-group: 'lgdexlkcluster'
               awslogs-region: !Ref AWS::Region
               awslogs-stream-prefix: 'api'
 

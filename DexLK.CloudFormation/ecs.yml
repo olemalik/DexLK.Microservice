@@ -8,20 +8,24 @@ Resources:
 
   ClusterStack:
     Type: "AWS::CloudFormation::Stack"
+    DependsOn : "NetworkStack"
     Properties:
       TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_cluster.yaml"
 
   ServiceAuthentication:
     Type: "AWS::CloudFormation::Stack"
+    DependsOn : "ClusterStack"
     Properties:
       TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_service_authentication.yaml"
 
   ServiceAddress:
     Type: "AWS::CloudFormation::Stack"
+    DependsOn : "ServiceAuthentication"
     Properties:
       TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_service_address.yaml"
 
   ServiceExchange:
     Type: "AWS::CloudFormation::Stack"
+    DependsOn : "ServiceAddress"
     Properties:
       TemplateURL: "https://dexlk-cloud-formation.s3.amazonaws.com/template_service_exchange.yaml"

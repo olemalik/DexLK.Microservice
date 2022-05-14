@@ -81,7 +81,7 @@ Resources:
   CloudWatchLogsGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: 'apis'
+      LogGroupName: 'lgdexlkcluster'
       RetentionInDays: 1
 
   ContainerSecurityGroup:
