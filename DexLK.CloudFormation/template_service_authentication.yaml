@@ -19,7 +19,7 @@ Resources:
           Cpu: 256
           Memory: 512
           PortMappings:
-            - ContainerPort: 8080
+            - ContainerPort: 80
               Protocol: tcp
           LogConfiguration:
             LogDriver: awslogs
@@ -50,7 +50,7 @@ Resources:
             - !ImportValue ContainerSecurityGroup
       LoadBalancers:
         - ContainerName: dexlk-authenticate
-          ContainerPort: 8080
+          ContainerPort: 80
           TargetGroupArn: !Ref TargetGroup
 
   TargetGroup:
@@ -77,7 +77,7 @@ Resources:
       Conditions:
         - Field: path-pattern
           Values:
-            - /api/users
+            - /api/users/*
       Actions:
         - TargetGroupArn: !Ref TargetGroup
           Type: forward
