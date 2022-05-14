@@ -15,7 +15,7 @@ Resources:
       ExecutionRoleArn: !ImportValue ECSTaskExecutionRole
       ContainerDefinitions:
         - Name: dexlk-exchange-docker
-          Image: public.ecr.aws/x5n8i3z0/dexlk-exchange-docker:latest
+          Image: 375851338491.dkr.ecr.us-east-1.amazonaws.com/dexlk-exchange:latest
           Cpu: 256
           Memory: 512
           PortMappings:

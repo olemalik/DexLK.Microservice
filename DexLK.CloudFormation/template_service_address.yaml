@@ -15,7 +15,7 @@ Resources:
       ExecutionRoleArn: !ImportValue ECSTaskExecutionRole
       ContainerDefinitions:
         - Name: dexlk-address
-          Image: public.ecr.aws/x5n8i3z0/dexlk-address:latest
+          Image: 375851338491.dkr.ecr.us-east-1.amazonaws.com/dexlk-address:latest
           Cpu: 256
           Memory: 512
           PortMappings:
