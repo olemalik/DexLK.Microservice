@@ -1,5 +1,3 @@
-#Create CloudFormation
-
 1. Go to cloud formation menu and  click on the createstack to create formation
-2. Create one global file for all the services (template_cluster.yaml,template_network.yml)
-3. Create 3 services for each microservice (Authentication, Address and Exchange)
+2. Create one global file(ecs.yaml) for all the services (template_cluster.yaml,template_network.yml,services) 
+3. now upload the ecs.yml to clould formation it will create clsuter, Task Definition, Task Group , Security Group , Load Balancer , Subnet and etc.
